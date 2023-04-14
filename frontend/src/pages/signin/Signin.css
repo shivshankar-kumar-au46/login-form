@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../../public/backgroud.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation: mymove 5s infinite;
+    left: -85px;
+    top: -221px;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 2px 2px 4px #fff;
+}
+
+@keyframes mymove {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.inner-container{
+    width: 22rem;
+    /* height: 300px; */
+    border: 1px solid red;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px black;
+}
+.heading{
+    padding: 10px;
+}
+.form-div{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    /* border: 1px solid red; */
+    height: 100%;
+}
+.form-div label{
+    margin: 10px 0px;
+    color: #fff;
+}
+.heading{
+    color: #fff;
+}
+.form-div input{
+    padding: 10px;
+    border-radius: 5px;
+}
+button{
+    margin: 20px 0px;
+    padding: 10px;
+    cursor: pointer;
+}

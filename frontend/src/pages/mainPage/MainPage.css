@@ -1,0 +1,7 @@
+.main-div{
+    background-image: url('../../../public/backgroud.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
