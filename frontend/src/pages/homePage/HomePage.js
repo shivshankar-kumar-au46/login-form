@@ -7,7 +7,7 @@ const HomePage = () => {
     const [userData, setUserData] = useState([])
 
     // useEffect(async ()=>{
-    //     const {data} = await axios.get("http://localhost:8000/getUser");
+    //     const {data} = await axios.get("https://registration-form-hi2o.onrender.com/getUser");
     //     console.log(data.allUser)
     //     // setUserData(data)
     // },[])

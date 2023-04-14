@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Signin.css";
 import HomePage from "../homePage/HomePage";
+import {BsFillBrightnessHighFill} from 'react-icons/bs'
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const User = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const {data, status} = await axios.post("http://localhost:8000/signin",
+    const {data, status} = await axios.post("https://registration-form-hi2o.onrender.com/signin",
     {email:email, password:password})
     // setName("")
     // setEmail("")
@@ -34,7 +35,7 @@ const User = () => {
   return (
     <div className="container">
          <div className="circle">
-        Hello Shiv
+         <BsFillBrightnessHighFill />
       </div>
       <div className="inner-container">
         <div className="heading">
@@ -58,9 +59,9 @@ const User = () => {
             onChange={(e) => {setPassword(e.target.value)}}
           />
           <Link to={'/signup'}>
-        <p style={{color:"white"}}>Don't have an account</p>
+        <a style={{color:"white"}}>Don't have an account</a>
         </Link>
-          <button type="submit">Submit</button>
+          <button type="submit">Login</button>
         </form>
         
       </div>
