@@ -12,7 +12,7 @@ const User = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const {data, status} = await axios.post("http://localhost:8000/signup",
+    const {data, status} = await axios.post("https://registration-form-hi2o.onrender.com/signup",
     {name:name, email:email, password:password})
     // setName("")
     // setEmail("")
