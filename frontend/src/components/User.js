@@ -64,7 +64,7 @@ const User = () => {
             required
             onChange={(e) => {setPassword(e.target.value)}}
           />
-          <Link to={'/signin'}>
+          <Link to={'/login'}>
         <a className="have-an-acc" >Already have an account</a>
         </Link>
           <button type="submit">Singup</button>
