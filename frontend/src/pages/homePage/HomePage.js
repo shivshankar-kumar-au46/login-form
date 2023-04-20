@@ -2,15 +2,20 @@ import React, { useState,useEffect } from 'react'
 import "./HomePage.css";
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const navigate = useNavigate();
     const [userData, setUserData] = useState([])
 
-    // useEffect(async ()=>{
-    //     const {data} = await axios.get("https://registration-form-hi2o.onrender.com/getUser");
-    //     console.log(data.allUser)
-    //     // setUserData(data)
-    // },[])
+    const token = Cookies.get('userToken')
+
+    useEffect( ()=>{
+       if(!token){
+        navigate('/login')
+       }
+    },[])
 
   return (
     

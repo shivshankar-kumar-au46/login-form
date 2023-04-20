@@ -3,6 +3,7 @@ import "./Navbar.css";
 // import Logo from "../../media/nav-logo.png";
 import { Route, Routes, Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   const [mediaIcon, setMediaIcon] = useState(true);
@@ -47,9 +48,16 @@ const Navbar = () => {
                 <a className="nav-link">Singup</a>
               </li>
             </Link>
-            <Link to={`/signin`}>
+            <Link to={`/login`}>
               <li className="nav-items">
                 <a className="nav-link">Login</a>
+              </li>
+            </Link>
+            <Link to={`/login`}>
+              <li className="nav-items">
+                <a className="nav-link" onClick={()=>{
+                  Cookies.remove('userToken')
+                }}>Logout</a>
               </li>
             </Link>
           </ul>

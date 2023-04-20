@@ -1,41 +1,46 @@
 import React, { useState } from "react";
 import "./Signin.css";
 import HomePage from "../homePage/HomePage";
-import {BsFillBrightnessHighFill} from 'react-icons/bs'
-import axios from 'axios'
+import { BsFillBrightnessHighFill } from "react-icons/bs";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const User = () => {
-    const navigate = useNavigate();
-//   const [name, setName] = useState("");
+  const navigate = useNavigate();
+  //   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const {data, status} = await axios.post("https://registration-form-hi2o.onrender.com/signin",
-    {email:email, password:password})
-    // setName("")
-    // setEmail("")
-    // setPassword("")
-    console.log(data)
+    e.preventDefault();
+    const data = await axios.post("http://localhost:8000/login", {
+      email: email,
+      password: password,
+    });
+    const { success, token } = data.data;
+    const tokens = token;
+    // Set the token in cookies
+    Cookies.set("userToken", tokens);
 
-    if(data.status === 'success') {
-        console.log(data);
-        navigate("/home");
-        // return true;
-        alert('Login successfully')
+    // To get the token from cookies, you can use:
+    const tokenfromcookie = Cookies.get("userToken");
+
+    console.log(tokens);
+
+    if (success === true && tokenfromcookie) {
+      navigate("/home");
+      alert("Login successfully");
     } else {
-        alert("User not found please register first")
+      navigate("/login");
+      alert("User not found please register first");
     }
-
   };
-
 
   return (
     <div className="container">
-         <div className="circle">
-         <BsFillBrightnessHighFill />
+      <div className="circle">
+        <BsFillBrightnessHighFill />
       </div>
       <div className="inner-container">
         <div className="heading">
@@ -48,7 +53,9 @@ const User = () => {
             value={email}
             placeholder="enter your email"
             required
-            onChange={(e) => {setEmail(e.target.value)}}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <label htmlFor="password">Password</label>
           <input
@@ -56,14 +63,15 @@ const User = () => {
             value={password}
             placeholder="enter your password"
             required
-            onChange={(e) => {setPassword(e.target.value)}}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
-          <Link to={'/signup'}>
-        <a style={{color:"white"}}>Don't have an account</a>
-        </Link>
+          <Link to={"/signup"}>
+            <a style={{ color: "white" }}>Don't have an account</a>
+          </Link>
           <button type="submit">Login</button>
         </form>
-        
       </div>
     </div>
   );
