@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000;
+    background-color: #0000009c;
   }
   
 
@@ -43,6 +43,7 @@
     padding: 1rem;
     align-items: center;
     transition: all 0.3s ease-in-out;
+    
   }
   
   .logoname {
@@ -68,6 +69,15 @@
     /* text-decoration: none; */
     color: white;
     font-size: 20px;
+    transition: 0.5s;
+    padding: 5px;
+
+  }
+
+  .nav-items a:hover{
+    border-radius: 6px;
+    /* border: 1px solid #ffff !important; */
+    background-color: rgba(199, 196, 196, 0.538);
   }
   
   .hamburger {
@@ -87,6 +97,10 @@
     margin: 4px auto;
     margin-right: 12px;
     background-color: rgb(238, 239, 241);
+  }
+
+  .close_logo_mobile {
+    display: none;
   }
   
   @media screen and (max-width: 768px) {
@@ -162,6 +176,7 @@
       display: flex;
       flex-direction: column;
     }
+    
   
     .nav-menu.active {
       left: 0;

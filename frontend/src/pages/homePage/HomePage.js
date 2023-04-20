@@ -21,7 +21,10 @@ const HomePage = () => {
     
     <div className='home-container'>
       <Navbar />
-      hello from home page
+      <div className="inner-body">
+<h1>Welcome to Home page</h1>
+      </div>
+      
      </div>
   )
 }

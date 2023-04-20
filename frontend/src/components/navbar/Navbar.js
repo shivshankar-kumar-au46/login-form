@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 const Navbar = () => {
   const [mediaIcon, setMediaIcon] = useState(true);
   const [closeIcon, setCloseIcon] = useState(false);
+  const [flags, setFlags] = useState(false);
 
   const showNavbar = () => {
     setMediaIcon(false);
@@ -18,6 +19,12 @@ const Navbar = () => {
     setMediaIcon(true);
     setCloseIcon(false);
   };
+  const token = Cookies.get('userToken')
+  useEffect(()=>{
+    if(token){
+      setFlags(true)
+    }
+  },[])
 
   return (
     <div className="nav-container">
@@ -28,38 +35,41 @@ const Navbar = () => {
 
         <div className={mediaIcon ? "nav-menu" : "nav-menu-mobile"}>
           <ul>
-            <Link to={`/`}>
+            <Link to={`/home`}>
               <li className="nav-items">
-                <a className="nav-link">Home</a>
+                <a className="navLink">Home</a>
               </li>
             </Link>
-            <Link to={`/`}>
+            <Link to={`#`}>
               <li className="nav-items">
                 <a className="nav-link">About Us</a>
               </li>
             </Link>
-            <Link to={`/`}>
+            {
+              !flags && <Link to={`/signup`}>
               <li className="nav-items">
-                <a className="nav-link">The App</a>
+                <a className="nav-links">Singup</a>
               </li>
             </Link>
-            <Link to={`/signup`}>
-              <li className="nav-items">
-                <a className="nav-link">Singup</a>
-              </li>
-            </Link>
-            <Link to={`/login`}>
+            }
+
+            {
+              !flags && <Link to={`/login`}>
               <li className="nav-items">
                 <a className="nav-link">Login</a>
               </li>
             </Link>
-            <Link to={`/login`}>
+            }
+            {
+              flags && <Link to={`/`}>
               <li className="nav-items">
                 <a className="nav-link" onClick={()=>{
                   Cookies.remove('userToken')
                 }}>Logout</a>
               </li>
             </Link>
+            }
+            
           </ul>
         </div>
         <div className="hamburger active" onClick={showNavbar}>
